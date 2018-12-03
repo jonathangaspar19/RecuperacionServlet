@@ -10,13 +10,18 @@
 	<div>
 		<a href="addActor.jsp">Añadir Director</a>
 	</div>
-	
+
 	<div>
 		<a href="list.jsp">Ver Actores</a>
 	</div>
 
+	<div>
+		<a href="asociar.jsp">Asociar</a>
+	</div>
 
-
+	<div>
+		<a href="buscarCumple.jsp">Cumpleanños</a>
+	</div>
 
 </body>
 </html>

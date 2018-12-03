@@ -16,10 +16,11 @@ import es.salesianos.model.Actor;
 import es.salesianos.model.Director;
 import es.salesianos.repository.Repository;
 import es.salesianos.service.ActorService;
+import es.salesianos.service.DirectorService;
 
 public class ListadoDirectorServlet extends HttpServlet {
 	private static final Logger log = LogManager.getLogger(ListadoDirectorServlet.class);
-	private ActorService servicio = new ActorService();
+	private DirectorService servicio = new DirectorService();
 	private Repository repository = new Repository();
 
 	@Override
@@ -36,7 +37,7 @@ public class ListadoDirectorServlet extends HttpServlet {
 	}
 
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/addActor.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/addDirector.jsp");
 		dispatcher.forward(req, resp);
 	}
 }

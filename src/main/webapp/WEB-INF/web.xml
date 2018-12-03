@@ -47,10 +47,21 @@
 		<servlet-class>es.salesianos.servlet.ConfirmDeleteOwnerServlet
 		</servlet-class>
 	</servlet>
+	
+		<servlet>
+		<servlet-name>confirmarAsociarPelicula</servlet-name>
+		<servlet-class>es.salesianos.servlet.confirmarAsociarPelicula
+		</servlet-class>
+	</servlet>
 
 	<servlet>
 		<servlet-name>deleteOwnerServlet</servlet-name>
 		<servlet-class>es.salesianos.servlet.deleteOwnerServlet
+		</servlet-class>
+	</servlet>
+		<servlet>
+		<servlet-name>asociarPeliculaActor</servlet-name>
+		<servlet-class>es.salesianos.servlet.asociarPeliculaActor
 		</servlet-class>
 	</servlet>
 
@@ -97,14 +108,25 @@
 		<url-pattern>/editOwner</url-pattern>
 	</servlet-mapping>
 
+
 	<servlet-mapping>
 		<servlet-name>confirmDeleteOwnerServlet</servlet-name>
 		<url-pattern>/confirmDeleteOwner</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>confirmarAsociarPelicula</servlet-name>
+		<url-pattern>/confirmarAsociarPelicula</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>deleteOwnerServlet</servlet-name>
 		<url-pattern>/deleteOwner</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>asociarPeliculaActor</servlet-name>
+		<url-pattern>/asociar</url-pattern>
 	</servlet-mapping>
 
 

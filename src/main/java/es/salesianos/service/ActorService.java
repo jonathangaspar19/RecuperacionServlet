@@ -46,6 +46,10 @@ public class ActorService {
 	public void deleteOwner(Integer codOwner) {
 		repository.delete(codOwner);
 	}
+	
+	public void enlazar(Integer codActor, Integer codPelicula) {
+		repository.enlazar(codActor, codPelicula);
+	}
 	/*
 	public Actor search(Integer codOwner) {
 		return repository.searchByCodOwner(codOwner);

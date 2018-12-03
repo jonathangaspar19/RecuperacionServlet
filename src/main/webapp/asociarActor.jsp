@@ -17,10 +17,12 @@
 		<input type="submit" value="ver listado">
 	</form>
 
-
 	<%
-		List<Pelicula> peliculas = (List<Pelicula>) request.getAttribute("listAllPeliculas");
-		pageContext.setAttribute("pelicula", peliculas);
+		request.getAttribute("codPelicula");
+	%>
+	<%
+		List<Actor> actor = (List<Actor>) request.getAttribute("listAllActores");
+		pageContext.setAttribute("actor", actor);
 	%>
 	<br />
 	<br />
@@ -34,25 +36,24 @@
 	<table border="1">
 		<thead>
 			<tr>
-				<td>Cod Owner</td>
+				<td>Cod Actor</td>
 				<td>Name</td>
-				<td>Surname</td>	
+				<td>Surname</td>
 				<td>Borrar</td>
-				
+
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="owner1" items="${listAllPeliculas}">
+			<c:forEach var="owner1" items="${listAllActores}">
 				<tr>
-					<td><c:out value="${pelicula1.codPelicula}" /></td>
-					<td><c:out value="${pelicula1.nombrePelicula}" /></td>
-					
-					<td><a href="/confirmDeletePelicula?codPelicula=${pelicula1.codPelicula}">DELETE</a>
-					</td>
-					
-					<td><a href="/asociarActor?codPelicula=${pelicula1.codPelicula}">Asociar Actor</a>
-					</td>
-					
+					<td><c:out value="${actor1.codActor}" /></td>
+					<td><c:out value="${actor1.nomActor" /></td>
+
+
+					<td><a
+						href="/confirmarAsociarPelicula?codActor=${actor1.codActor}">Asociar
+							Actor</a></td>
+
 				</tr>
 			</c:forEach>
 		</tbody>

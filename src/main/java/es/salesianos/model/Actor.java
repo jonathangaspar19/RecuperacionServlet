@@ -61,6 +61,11 @@ public class Actor {
 	public String toString() {
 		return "User [codOwner="+codActor+ "name=" + name + ", surname=" + surname + "]";
 	}
+
+	public void setCodActor(int int1) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
