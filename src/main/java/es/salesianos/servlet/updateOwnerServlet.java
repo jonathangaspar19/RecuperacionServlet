@@ -19,7 +19,7 @@ ActorService service = new ActorService();
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Actor owner = ActorAssembler.assembleOwnerFrom(req);
+		Actor owner = ActorAssembler.assembleActorFrom(req);
 		service.insertOrUpdate(owner);
 		redirect(req, resp);
 	}

@@ -8,11 +8,11 @@
 </head>
 <body>
 	<div>
-		<a href="addActor.jsp">Añadir Actores</a>
+		<a href="addActor.jsp">Añadir Director</a>
 	</div>
 	
 	<div>
-		<a href="listActor.jsp">Ver Actores</a>
+		<a href="list.jsp">Ver Actores</a>
 	</div>
 
 

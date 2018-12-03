@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insertar nuevo Actor</title>
+<title>Insertar nueva pelicula</title>
 </head>
 <body>
 	<div>

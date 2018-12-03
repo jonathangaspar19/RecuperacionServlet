@@ -10,8 +10,8 @@ import java.util.List;
 import es.salesianos.connection.ConnectionH2;
 import es.salesianos.connection.ConnectionManager;
 import es.salesianos.model.Actor;
-import es.salesianos.model.Peliculas;
-
+import es.salesianos.model.Actor;
+import es.salesianos.model.Pelicula;
 
 
 public class Repository {
@@ -45,6 +45,32 @@ public class Repository {
 		manager.close(conn);
 		return actorInDatabase;
 	}
+	
+	public Pelicula searchPelicula(Pelicula peliculaFormulario) {
+		Pelicula actorInDatabase= null;
+		ResultSet resultSet = null;
+		PreparedStatement prepareStatement = null;
+		Connection conn = manager.open(jdbcUrl);
+		try {
+			prepareStatement = conn.prepareStatement("SELECT * FROM PELICULA WHERE codOwner = ?");
+			prepareStatement.setInt(1, peliculaFormulario.getCodPelicula());
+			resultSet = prepareStatement.executeQuery();
+			while(resultSet.next()){
+				actorInDatabase = new Pelicula();
+				actorInDatabase.setCodPelicula(resultSet.getInt(1));
+				actorInDatabase.setNombrePelicula(resultSet.getString(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}finally {
+			close(resultSet);
+			close(prepareStatement);
+			
+		}
+		manager.close(conn);
+		return actorInDatabase;
+	}
 
 	private void close(PreparedStatement prepareStatement) {
 		try {
@@ -64,7 +90,7 @@ public class Repository {
 		}
 	}
 
-	public void insert(Actor actorFormulario) {
+	public void insertActor(Actor actorFormulario) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
@@ -84,6 +110,26 @@ public class Repository {
 		manager.close(conn);
 	}
 
+	public void insertPelicula(Pelicula peliculaFormulario) {
+		Connection conn = manager.open(jdbcUrl);
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = conn.prepareStatement("INSERT INTO ACTOR (name,surname)" +
+					"VALUES (?, ?)");
+			preparedStatement.setString(1, peliculaFormulario.getNombrePelicula());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}finally {
+			close(preparedStatement);
+		}
+		
+		
+		manager.close(conn);
+	}
+	
+	
 	public void update(Actor ownerFormulario) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
@@ -93,6 +139,26 @@ public class Repository {
 			preparedStatement.setString(1, ownerFormulario.getName());
 			preparedStatement.setString(2, ownerFormulario.getSurname());
 			preparedStatement.setInt(3, ownerFormulario.getCodActor());
+
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			close(preparedStatement);
+			manager.close(conn);
+		}
+
+	}
+	
+	public void updatePelicula(Pelicula peliculaFormulario) {
+		Connection conn = manager.open(jdbcUrl);
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = conn
+					.prepareStatement("UPDATE PELICULA SET name = ? WHERE codPelicula = ?");
+			preparedStatement.setString(1, peliculaFormulario.getNombrePelicula());
+			preparedStatement.setInt(2, peliculaFormulario.getCodPelicula());
 
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -142,27 +208,13 @@ public class Repository {
 		return preparedStatement;
 	}
 
+	/*
 	public List<Actor> searchAll() {
 		List<Actor> listOwners = new ArrayList<Actor>();
 		Connection conn = manager.open(jdbcUrl);
 		ResultSet resultSet = null;
 		PreparedStatement prepareStatement = null;
-		try {
-			/*
-			prepareStatement = conn.prepareStatement("
-			SELECT * FROM OWNER o, PET p INNER JOIN WHERE o.codOwner = p.codOwner");
-			while (resultSet.next()) {
-				Owner ownerInDatabase = new Owner();
-				ownerInDatabase.setCodOwner(resultSet.getInt(1));
-				ownerInDatabase.setName(resultSet.getString(2));
-				ownerInDatabase.setSurname(resultSet.getString(3));
-				Pet pet = new Pet();
-				pet.setName(resultSet.getString(4)) 
-				pet.setCodOwner(resultSet.getString(5)) 
-				ownerInDatabase.getMascotas().add(pet)
-				listOwners.add(ownerInDatabase);
-			}
-			 */
+		
 			
 			prepareStatement = conn.prepareStatement("SELECT * FROM OWNER");
 			resultSet = prepareStatement.executeQuery();
@@ -176,18 +228,7 @@ public class Repository {
 				listOwners.add(ownerInDatabase);
 			}
 
-			for (Actor owner : listOwners) {
-				
-				prepareStatement = conn.prepareStatement(
-						"SELECT * FROM PET where codOwner="+owner.getCodActor());
-				resultSet = prepareStatement.executeQuery();
-				while (resultSet.next()) {
-					Peliculas pet = new Peliculas();
-					pet.setName(resultSet.getString(1));
-					pet.setCodOwner(resultSet.getInt(2));
-					owner.getMascotas().add(pet);
-				}
-			}
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -200,7 +241,7 @@ public class Repository {
 
 		return listOwners;
 	}
-	
+	*/
 	public Actor searchByCodOwner(Integer codActor) {
 		Actor ownerInDatabase = null;
 		ResultSet resultSet = null;
@@ -227,40 +268,52 @@ public class Repository {
 		return ownerInDatabase;
 	}
 
-	public void insertPet(Peliculas pet) {
-		Connection conn = manager.open(jdbcUrl);
-		PreparedStatement preparedStatement = null;
-		try {
-			preparedStatement = conn.prepareStatement("INSERT INTO PET (petName,codOwner)" +
-					"VALUES (?, ?)");
-			preparedStatement.setString(1, pet.getName());
-			preparedStatement.setInt(2, pet.getCodOwner());
-			preparedStatement.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}finally {
-			close(preparedStatement);
-		}
-		
-		
-		manager.close(conn);
-		
-	}
 	
-	public List<Peliculas> searchAllPets() {
-		List<Peliculas> listPets = new ArrayList<Peliculas>();
+	public List<Actor> searchAll() {
+		List<Actor> listOwners = new ArrayList<Actor>();
 		Connection conn = manager.open(jdbcUrl);
 		ResultSet resultSet = null;
 		PreparedStatement prepareStatement = null;
 		try {
-			prepareStatement = conn.prepareStatement("SELECT * FROM PET WHERE codOwner=?");
+			
+			
+			prepareStatement = conn.prepareStatement("SELECT * FROM ACTOR");
 			resultSet = prepareStatement.executeQuery();
 			while (resultSet.next()) {
-				Peliculas petInDatabase = new Peliculas();
+				Actor ownerInDatabase = new Actor();
 				
-				petInDatabase.setName(resultSet.getString(1));
-				petInDatabase.setCodOwner(resultSet.getInt(2));
+				ownerInDatabase.setCodActor(resultSet.getInt(1));
+				ownerInDatabase.setName(resultSet.getString(2)); 
+				ownerInDatabase.setSurname(resultSet.getString(3));
+				
+				listOwners.add(ownerInDatabase);
+			}
+
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			close(resultSet);
+			close(prepareStatement);
+			manager.close(conn);
+		}
+
+		return listOwners;
+	}
+	public List<Pelicula> searchAllPeliculas() {
+		List<Pelicula> listPets = new ArrayList<Pelicula>();
+		Connection conn = manager.open(jdbcUrl);
+		ResultSet resultSet = null;
+		PreparedStatement prepareStatement = null;
+		try {
+			prepareStatement = conn.prepareStatement("SELECT * FROM PELICULA WHERE codOwner=?");
+			resultSet = prepareStatement.executeQuery();
+			while (resultSet.next()) {
+				Pelicula petInDatabase = new Pelicula();
+				
+				petInDatabase.setNombrePelicula(resultSet.getString(1));
 				
 
 				listPets.add(petInDatabase);
@@ -277,5 +330,7 @@ public class Repository {
 
 		return listPets;
 	}
+
+	
 
 }

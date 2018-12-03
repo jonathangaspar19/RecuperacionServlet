@@ -12,33 +12,35 @@ import org.apache.logging.log4j.Logger;
 import es.salesianos.connection.ConnectionH2;
 import es.salesianos.connection.ConnectionManager;
 import es.salesianos.model.Actor;
+import es.salesianos.model.Pelicula;
 import es.salesianos.model.assembler.ActorAssembler;
+import es.salesianos.model.assembler.PeliculaAssembler;
 import es.salesianos.repository.Repository;
 import es.salesianos.utils.DateConverter;
 
-public class ActorService {
+public class PeliculaService {
 	
 	
 	private Repository repository = new Repository();
 	private DateConverter converter = new DateConverter();
-	private static final Logger LOGGER = LogManager.getLogger(ActorService.class);
+	private static final Logger LOGGER = LogManager.getLogger(PeliculaService.class);
 	
 	
-	public Actor assembleOwnerFromRequest(HttpServletRequest req) {
-		return ActorAssembler.assembleActorFrom(req);
+	public Pelicula assembleOwnerFromRequest(HttpServletRequest req) {
+		return PeliculaAssembler.assemblePeliculaFrom(req);
 	}
 	
 	//pasar los datos
-	public void addActor(Actor actor) {
-		repository.insertActor(actor);
+	public void addPelicula(Pelicula pelicula) {
+		repository.insertPelicula(pelicula);
 	}
 
-	public void insertOrUpdate(Actor ownerFormulario) {
-		Actor userInDatabase = repository.search(ownerFormulario);
+	public void insertOrUpdate(Pelicula peliculaFormulario) {
+		Pelicula userInDatabase = repository.searchPelicula(peliculaFormulario);
 		if(null == userInDatabase){
-			repository.insertActor(ownerFormulario);
+			repository.insertPelicula(peliculaFormulario);
 		}else{
-			repository.update(ownerFormulario);
+			repository.updatePelicula(peliculaFormulario);
 		}
 	}
 	

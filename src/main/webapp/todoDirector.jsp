@@ -4,20 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Pagina de inicio</title>
+<title>Insertar nuevo Actor</title>
 </head>
 <body>
 	<div>
-		<a href="todoActor.jsp">Ver Actores</a>
+		<a href="addDirector.jsp">Añadir Actores</a>
 	</div>
 	
 	<div>
-		<a href="todoPelicula.jsp">Ver Actores</a>
+		<a href="listDirector.jsp">Ver Actores</a>
 	</div>
-	
-	<div>
-		<a href="todoDirector.jsp">Ver Actores</a>
-	</div>
-	
+
+
+
+
 </body>
 </html>

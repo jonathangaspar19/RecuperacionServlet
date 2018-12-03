@@ -28,18 +28,18 @@ public class Actor {
 	}
 
 
-	private List<Peliculas> mascotas = new ArrayList<Peliculas>();
+	private List<Pelicula> mascotas = new ArrayList<Pelicula>();
 	
-	public void setMascotas(List<Peliculas> mascotas) {
+	public void setMascotas(List<Pelicula> mascotas) {
 		this.mascotas=mascotas;
 	}
 	
-	public List<Peliculas> getMascotas() {
+	public List<Pelicula> getMascotas() {
 		return mascotas;
 	}
 	
 	
-	public void addToListPet(Peliculas pet) {
+	public void addToListPet(Pelicula pet) {
 		mascotas.add(pet);
 	}
 

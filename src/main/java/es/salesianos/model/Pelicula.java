@@ -6,11 +6,15 @@ import java.util.List;
 
 public class Pelicula {
 	private Integer codPelicula;
-	public Integer getcodPelicula() {
+	
+	
+
+	
+	public Integer getCodPelicula() {
 		return codPelicula;
 	}
 
-	public void setCodActor(Integer codPelicula) {
+	public void setCodPelicula(Integer codPelicula) {
 		this.codPelicula = codPelicula;
 	}
 
@@ -27,7 +31,7 @@ public class Pelicula {
 	}
 
 
-	private List<Peliculas> peliculas = new ArrayList<Peliculas>();
+	private List<Pelicula> peliculas = new ArrayList<Pelicula>();
 	
 	
 	

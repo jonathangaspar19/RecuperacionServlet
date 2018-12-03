@@ -26,6 +26,11 @@
 		<servlet-class>es.salesianos.servlet.ListadoOwnerServlet</servlet-class>
 	</servlet>
 
+<servlet>
+		<servlet-name>listadoPeliculas</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListadoPeliculasrServlet</servlet-class>
+	</servlet>
+
 	<servlet>
 		<servlet-name>updateOwnerServlet</servlet-name>
 		<servlet-class>es.salesianos.servlet.updateOwnerServlet
@@ -75,6 +80,11 @@
 	<servlet-mapping>
 		<servlet-name>listado</servlet-name>
 		<url-pattern>cargarListado</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>listadoPeliculas</servlet-name>
+		<url-pattern>cargarListadoPeliculas</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>

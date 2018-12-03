@@ -3,19 +3,19 @@ package es.salesianos.model.assembler;
 import javax.servlet.http.HttpServletRequest;
 
 import es.salesianos.model.Actor;
+import es.salesianos.model.Pelicula;
 
 public class ActorAssembler {
 
-	public static Actor assembleOwnerFrom(HttpServletRequest req) {
-		Actor owner = new Actor();
-		String codOwner=req.getParameter("codOwner");
-		if(null != codOwner) {
-			owner.setCodActor(Integer.parseInt(codOwner));
+	public static Actor assembleActorFrom(HttpServletRequest req) {
+		Actor actor = new Actor();
+		String codActor=req.getParameter("codActor");
+		if(null != codActor) {
+			actor.setCodActor(Integer.parseInt(codActor));
 		}
-		String name = req.getParameter("name");
+		String name = req.getParameter("nombrePelicula");
 		String lastname = req.getParameter("surname");
-		owner.setName(name);
-		owner.setSurname(lastname);
-		return owner;
+		actor.setName(name);
+		return actor;
 	}
 }
