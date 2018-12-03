@@ -8,19 +8,18 @@
 </head>
 
 <%
-request.getAttribute("codOwner");
+request.getAttribute("codActor");
  
 %>
 <body>
 
-	<form action="deleteOwner" method="get">
-		<div>¿Está seguro de que desea borrar el propietario?</div>
+	<form action="deleteActor" method="get">
+		<div>¿Está seguro de que desea borrar el Actor?</div>
 		<input type="submit" name="answer" value="SI" />
 		<input type="submit" name="answer" value="NO" />
-		<!-- 
-		<a href="listado.jsp">NO</a>
-		 -->
-		<input type="hidden" name="codOwner" value="${codOwner}" />
+		
+		
+		<input type="hidden" name="codActor" value="${codActor}" />
 
 	</form>
 

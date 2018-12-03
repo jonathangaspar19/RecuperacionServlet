@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div>
-		<a href="addActor.jsp">Ver Actores</a>
+		<a href="addActor.jsp">Añadir Actores</a>
 	</div>
 	
 	<div>

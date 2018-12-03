@@ -9,7 +9,6 @@
 <body>
 	Propietario guardado con exito
 	<br/>
-	<a href="addOwner.jsp">Quiero añadir un nuevo alumno</a>
-	<a href="listOwner.jsp">Quiero mostrar la lista de los alumnos y sus mascotas</a>
-</body>
+	<a href="todoActor.jsp">Atras</a>
+	</body>
 </html>

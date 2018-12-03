@@ -8,7 +8,7 @@
 /media/jonathan/HDD/WORKSPACE/ExamenJonathanGaspar/src/main/java/es/salesianos/servlet/recoveryAddOwnerServlet.java
 /media/jonathan/HDD/WORKSPACE/ExamenJonathanGaspar/src/main/java/es/salesianos/servlet/ConfirmDeleteOwnerServlet.java
 /media/jonathan/HDD/WORKSPACE/ExamenJonathanGaspar/src/main/java/es/salesianos/model/Actor.java
-/media/jonathan/HDD/WORKSPACE/ExamenJonathanGaspar/src/main/java/es/salesianos/servlet/addOwnerServlet.java
+/media/jonathan/HDD/WORKSPACE/ExamenJonathanGaspar/src/main/java/es/salesianos/servlet/addActorServlet.java
 /media/jonathan/HDD/WORKSPACE/ExamenJonathanGaspar/src/main/java/es/salesianos/connection/ConnectionH2.java
 /media/jonathan/HDD/WORKSPACE/ExamenJonathanGaspar/src/main/java/es/salesianos/model/assembler/PetAssembler.java
 /media/jonathan/HDD/WORKSPACE/ExamenJonathanGaspar/src/main/java/es/salesianos/model/Peliculas.java

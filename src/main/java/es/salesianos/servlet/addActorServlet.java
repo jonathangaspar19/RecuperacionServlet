@@ -16,13 +16,13 @@ import es.salesianos.service.ActorService;
  * Servlet implementation class addOwnerServlet
  */
 @WebServlet("/addOwnerServlet")
-public class addOwnerServlet extends HttpServlet {
+public class addActorServlet extends HttpServlet {
 private ActorService service = new ActorService();
 	
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Actor owner = service.assembleOwnerFromRequest(req);
-		service.addOwner(owner);
+		Actor actor = service.assembleOwnerFromRequest(req);
+		service.addActor(actor);
 		redirect(req,resp);
 	}
 

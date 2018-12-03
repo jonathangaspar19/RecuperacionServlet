@@ -19,7 +19,7 @@
 
 
 	<%
-		List<Owner> owners = (List<Owner>) request.getAttribute("listAllOwners");
+		List<Actor> owners = (List<Actor>) request.getAttribute("listAllActores");
 		pageContext.setAttribute("owners", owners);
 	%>
 	<br />
@@ -36,28 +36,22 @@
 			<tr>
 				<td>Cod Owner</td>
 				<td>Name</td>
-				<td>Surname</td>
-				<td>Editar</td>
+				<td>Surname</td>	
 				<td>Borrar</td>
-				<td>Añadir Macota</td>
-				<td>Mascotas</td>
+				
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="owner1" items="${listAllOwners}">
+			<c:forEach var="owner1" items="${listAllActores}">
 				<tr>
-					<td><c:out value="${owner1.codOwner}" /></td>
-					<td><c:out value="${owner1.name}" /></td>
-					<td><c:out value="${owner1.surname}" /></td>
-					<td><a href="/editOwner?codOwner=${owner1.codOwner}">EDIT</a>
+					<td><c:out value="${actor1.codActor}" /></td>
+					<td><c:out value="${actor1.name}" /></td>
+					<td><c:out value="${actor1.surname}" /></td>
+					
+					<td><a href="/confirmDeleteOwner?codOwner=${actor1.codActor}">DELETE</a>
 					</td>
-					<td><a href="/confirmDeleteOwner?codOwner=${owner1.codOwner}">DELETE</a>
-					</td>
-					<td><a href="/recoveryAddCodOwner?codOwner=${owner1.codOwner}">ADD
-							PET</a></td>
-					<td><c:forEach var="pet" items="${owner1.mascotas}">
-							<c:out value="${pet.name} " />
-						</c:forEach></td>
+					
+					
 				</tr>
 			</c:forEach>
 		</tbody>

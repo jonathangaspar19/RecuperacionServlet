@@ -29,8 +29,8 @@ public class ActorService {
 	}
 	
 	//pasar los datos
-	public void addOwner(Actor owner) {
-		repository.insert(owner);
+	public void addActor(Actor actor) {
+		repository.insert(actor);
 	}
 
 	public void insertOrUpdate(Actor ownerFormulario) {

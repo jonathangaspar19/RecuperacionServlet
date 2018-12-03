@@ -8,11 +8,10 @@
 </head>
 <body>
 	<div>
-		<a href="todoActor.jsp">Atras</a>
+		<a href="todoPelicula.jsp">Atras</a>
 	</div>
-	<form action="inscribirActores" method="post">
-		<span>Nombre:</span><input type="text" name="name"> 
-		<span>Apellidos:</span><input type="text" name="surname"> <input type="submit">
+	<form action="inscribirPeliculas" method="post">
+		<span>Nombre pelicula:</span><input type="text" name="nombrePelicula"> 
 	</form>
 
 

@@ -12,8 +12,13 @@
 		Developer's Guide.
 	</description>
 	<servlet>
-		<servlet-name>addOwnerServlet</servlet-name>
-		<servlet-class>es.salesianos.servlet.addOwnerServlet</servlet-class>
+		<servlet-name>addActorServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.addActorServlet</servlet-class>
+	</servlet>
+	
+		<servlet>
+		<servlet-name>addPeliculaServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.addPeliculaServlet</servlet-class>
 	</servlet>
 
 	<servlet>
@@ -55,11 +60,16 @@
 		</servlet-class>
 	</servlet>
 
-<!-- Mapping -->
+	<!-- Mapping -->
 
 	<servlet-mapping>
-		<servlet-name>addOwnerServlet</servlet-name>
-		<url-pattern>inscribirAlumnos</url-pattern>
+		<servlet-name>addActorServlet</servlet-name>
+		<url-pattern>inscribirActores</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>addPeliculaServlet</servlet-name>
+		<url-pattern>inscribirPelicula</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>

@@ -12,8 +12,8 @@ public class ConfirmDeleteOwnerServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String codOwner = req.getParameter("codOwner");
-		req.setAttribute("codOwner", codOwner);
+		String codActor = req.getParameter("codActor");
+		req.setAttribute("codActor", codActor);
 		redirect(req, resp);
 	}
 
