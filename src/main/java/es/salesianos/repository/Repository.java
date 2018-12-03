@@ -10,7 +10,9 @@ import java.util.List;
 import es.salesianos.connection.ConnectionH2;
 import es.salesianos.connection.ConnectionManager;
 import es.salesianos.model.Actor;
-import es.salesianos.model.Actor;
+import es.salesianos.model.Director;
+import es.salesianos.model.Director;
+import es.salesianos.model.Director;
 import es.salesianos.model.Pelicula;
 
 
@@ -110,6 +112,26 @@ public class Repository {
 		manager.close(conn);
 	}
 
+	
+	public void insertDirector(Director directorFormulario) {
+		Connection conn = manager.open(jdbcUrl);
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = conn.prepareStatement("INSERT INTO DIRECTOR (name,surname)" +
+					"VALUES (?, ?)");
+			preparedStatement.setString(1, directorFormulario.getName());
+			preparedStatement.setString(2, directorFormulario.getSurname());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}finally {
+			close(preparedStatement);
+		}
+		
+		
+		manager.close(conn);
+	}
 	public void insertPelicula(Pelicula peliculaFormulario) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
@@ -129,16 +151,35 @@ public class Repository {
 		manager.close(conn);
 	}
 	
-	
-	public void update(Actor ownerFormulario) {
+	public void updateActor(Actor ownerFormulario) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = conn
-					.prepareStatement("UPDATE OWNER SET name = ?,surname = ? WHERE codOwner = ?");
+					.prepareStatement("UPDATE OWNER SET name = ?,surname = ? WHERE codActor = ?");
 			preparedStatement.setString(1, ownerFormulario.getName());
 			preparedStatement.setString(2, ownerFormulario.getSurname());
 			preparedStatement.setInt(3, ownerFormulario.getCodActor());
+
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			close(preparedStatement);
+			manager.close(conn);
+		}
+
+	}
+	public void updateDirector(Director ownerFormulario) {
+		Connection conn = manager.open(jdbcUrl);
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = conn
+					.prepareStatement("UPDATE OWNER SET name = ?,surname = ? WHERE codDirector = ?");
+			preparedStatement.setString(1, ownerFormulario.getName());
+			preparedStatement.setString(2, ownerFormulario.getSurname());
+			preparedStatement.setInt(3, ownerFormulario.getCodDirector());
 
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -269,8 +310,8 @@ public class Repository {
 	}
 
 	
-	public List<Actor> searchAll() {
-		List<Actor> listOwners = new ArrayList<Actor>();
+	public List<Actor> searchAllActores() {
+		List<Actor> listActores = new ArrayList<Actor>();
 		Connection conn = manager.open(jdbcUrl);
 		ResultSet resultSet = null;
 		PreparedStatement prepareStatement = null;
@@ -280,13 +321,13 @@ public class Repository {
 			prepareStatement = conn.prepareStatement("SELECT * FROM ACTOR");
 			resultSet = prepareStatement.executeQuery();
 			while (resultSet.next()) {
-				Actor ownerInDatabase = new Actor();
+				Actor actorInDatabase = new Actor();
 				
-				ownerInDatabase.setCodActor(resultSet.getInt(1));
-				ownerInDatabase.setName(resultSet.getString(2)); 
-				ownerInDatabase.setSurname(resultSet.getString(3));
+				actorInDatabase.setCodActor(resultSet.getInt(1));
+				actorInDatabase.setName(resultSet.getString(2)); 
+				actorInDatabase.setSurname(resultSet.getString(3));
 				
-				listOwners.add(ownerInDatabase);
+				listActores.add(actorInDatabase);
 			}
 
 			
@@ -300,7 +341,7 @@ public class Repository {
 			manager.close(conn);
 		}
 
-		return listOwners;
+		return listActores;
 	}
 	public List<Pelicula> searchAllPeliculas() {
 		List<Pelicula> listPets = new ArrayList<Pelicula>();
@@ -331,6 +372,39 @@ public class Repository {
 		return listPets;
 	}
 
-	
+	public List<Director> searchAllDirectores() {
+		List<Director> listDirectores = new ArrayList<Director>();
+		Connection conn = manager.open(jdbcUrl);
+		ResultSet resultSet = null;
+		PreparedStatement prepareStatement = null;
+		try {
+			
+			
+			prepareStatement = conn.prepareStatement("SELECT * FROM DIRECTOR");
+			resultSet = prepareStatement.executeQuery();
+			while (resultSet.next()) {
+				Director directorInDatabase = new Director();
+				
+				directorInDatabase.setCodDirector(resultSet.getInt(1));
+				directorInDatabase.setName(resultSet.getString(2)); 
+				directorInDatabase.setSurname(resultSet.getString(3));
+				
+				listDirectores.add(directorInDatabase);
+			}
+
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			close(resultSet);
+			close(prepareStatement);
+			manager.close(conn);
+		}
+
+		return listDirectores;
+	}
+
 
 }

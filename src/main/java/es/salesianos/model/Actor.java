@@ -5,12 +5,15 @@ import java.util.Date;
 import java.util.List;
 
 public class Actor {
-	private Integer codActor;
-	public Integer getCodActor() {
+	private Actor codActor;
+	
+
+
+	public Actor getCodActor() {
 		return codActor;
 	}
 
-	public void setCodActor(Integer codActor) {
+	public void setCodActor(Actor codActor) {
 		this.codActor = codActor;
 	}
 

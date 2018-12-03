@@ -63,7 +63,7 @@ public class PeliculaService {
 	
 	public List<Actor> listAllActores() {
 		LOGGER.info("ESTAS EN EL ListService");
-		return repository.searchAll();
+		return repository.searchAllActores();
 	}
 	
 	

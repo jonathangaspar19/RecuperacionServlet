@@ -17,12 +17,12 @@ import es.salesianos.model.assembler.ActorAssembler;
 import es.salesianos.repository.Repository;
 import es.salesianos.utils.DateConverter;
 
-public class ActorService {
+public class DirectorService {
 	
 	
 	private Repository repository = new Repository();
 	private DateConverter converter = new DateConverter();
-	private static final Logger LOGGER = LogManager.getLogger(ActorService.class);
+	private static final Logger LOGGER = LogManager.getLogger(DirectorService.class);
 	
 	
 	public Actor assembleOwnerFromRequest(HttpServletRequest req) {
@@ -30,8 +30,8 @@ public class ActorService {
 	}
 	
 	//pasar los datos
-	public void addActor(Actor actor) {
-		repository.insertActor(actor);
+	public void addDirector(Director director) {
+		repository.insertDirector(director);
 	}
 
 	public void insertOrUpdate(Actor ownerFormulario) {
@@ -46,12 +46,12 @@ public class ActorService {
 	public void deleteOwner(Integer codOwner) {
 		repository.delete(codOwner);
 	}
-	/*
-	public Actor search(Integer codOwner) {
-		return repository.searchByCodOwner(codOwner);
+	
+	public Actor search(Actor codAutor) {
+		return repository.search(codAutor);
 		
 	}
-*/
+
 	public Repository getRepository() {
 		return repository;
 	}
@@ -60,20 +60,10 @@ public class ActorService {
 		this.repository = repository;
 	}
 	
-	public List<Actor> listAllActores() {
-		LOGGER.info("ESTAS EN EL ListService");
-		return repository.searchAllActores();
-	}
-
 	public List<Director> listAllDirectores() {
 		LOGGER.info("ESTAS EN EL ListService");
 		return repository.searchAllDirectores();
 	}
-
-	public Actor search(Actor codActor) {
-		return repository.search(codActor);
-	}
-	
 	
 	
 
